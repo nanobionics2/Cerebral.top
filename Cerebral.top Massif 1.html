@@ -1,0 +1,1263 @@
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>cerebral.top | Engenharia da Vida</title>
+  <meta name="description" content="cerebral.top - Engenharia da Vida. Plataforma com acesso por 6 ou 12 meses e programas em Economia das Doenças, Administração das Doenças, Economia da Vida, Administração da Vida, Economia Anti-Assimétrica, Neuroeconomia, Engenharia da Vida, Neurodireito, Neurogestão, Administração Anti-Assimétrica e Direito Anti-Contenda." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #07111f;
+      --bg-2: #0b1830;
+      --card: rgba(12, 24, 48, 0.72);
+      --line: rgba(255, 255, 255, 0.1);
+      --text: #edf3ff;
+      --muted: #a8b7d7;
+      --primary: #3ea0ff;
+      --primary-2: #6c7bff;
+      --accent: #20d3b3;
+      --danger: #ff7a7a;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      --radius: 22px;
+      --radius-sm: 16px;
+      --max: 1220px;
+    }* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(62,160,255,0.24), transparent 30%),
+    radial-gradient(circle at 90% 10%, rgba(108,123,255,0.20), transparent 28%),
+    radial-gradient(circle at 50% 100%, rgba(32,211,179,0.12), transparent 24%),
+    linear-gradient(180deg, #06101c 0%, #081427 35%, #050a14 100%);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+.noise::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 22px 22px;
+  mask-image: radial-gradient(circle at center, black, transparent 80%);
+}
+
+.container {
+  width: min(100% - 32px, var(--max));
+  margin: 0 auto;
+}
+
+.glass {
+  background: var(--card);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(3, 10, 20, 0.72);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 16px 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.brand-badge {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-2));
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  box-shadow: 0 10px 24px rgba(62,160,255,0.35);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.nav-links a:hover { color: var(--text); }
+
+.btn {
+  border: 0;
+  cursor: pointer;
+  border-radius: 999px;
+  padding: 14px 22px;
+  font-weight: 800;
+  font-size: 0.96rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+}
+
+.btn:hover { transform: translateY(-2px); }
+
+.btn-primary {
+  color: white;
+  background: linear-gradient(135deg, var(--primary), var(--primary-2));
+  box-shadow: 0 14px 34px rgba(62, 160, 255, 0.35);
+}
+
+.btn-secondary {
+  color: var(--text);
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.hero {
+  padding: 64px 0 26px;
+  position: relative;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.08fr 0.92fr;
+  gap: 28px;
+  align-items: center;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: #d9e6ff;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--accent);
+  box-shadow: 0 0 0 6px rgba(32,211,179,0.12);
+}
+
+h1 {
+  font-size: clamp(2.2rem, 5vw, 4.8rem);
+  line-height: 0.97;
+  margin: 0 0 18px;
+  letter-spacing: -0.055em;
+  max-width: 12ch;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #ffffff, #9ccaff, #77f0dd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero p {
+  color: var(--muted);
+  font-size: 1.08rem;
+  line-height: 1.7;
+  max-width: 60ch;
+  margin: 0 0 24px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.hero-metrics {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.metric {
+  padding: 14px 16px;
+  border-radius: 18px;
+  min-width: 150px;
+}
+
+.metric strong {
+  display: block;
+  font-size: 1.3rem;
+  margin-bottom: 4px;
+}
+
+.metric span {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.hero-card {
+  border-radius: 28px;
+  padding: 22px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-card::before {
+  content: "";
+  position: absolute;
+  inset: -30% auto auto -10%;
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, rgba(62,160,255,0.35), transparent 65%);
+  pointer-events: none;
+}
+
+.dashboard {
+  display: grid;
+  gap: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.dashboard-top {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 16px;
+  align-items: center;
+}
+
+.price-card {
+  padding: 18px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.price-card h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+.price-card .big {
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+}
+
+.price-card small {
+  display: block;
+  color: var(--muted);
+  margin-top: 4px;
+  line-height: 1.5;
+}
+
+.tag {
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(32,211,179,0.14);
+  color: #bffbef;
+  font-size: 0.85rem;
+  font-weight: 800;
+  border: 1px solid rgba(32,211,179,0.22);
+  align-self: start;
+}
+
+.mini-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.mini-card {
+  padding: 16px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.mini-card strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.mini-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.section {
+  padding: 34px 0;
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 18px;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+}
+
+.section-head h2 {
+  margin: 0;
+  font-size: clamp(1.7rem, 3vw, 3rem);
+  letter-spacing: -0.045em;
+}
+
+.section-head p {
+  margin: 0;
+  color: var(--muted);
+  max-width: 60ch;
+  line-height: 1.7;
+}
+
+.tracks {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.track {
+  padding: 22px;
+  border-radius: 22px;
+  position: relative;
+  overflow: hidden;
+  min-height: 220px;
+}
+
+.track::after {
+  content: "";
+  position: absolute;
+  inset: auto -30px -60px auto;
+  width: 160px;
+  height: 160px;
+  background: radial-gradient(circle, rgba(255,255,255,0.10), transparent 65%);
+  pointer-events: none;
+}
+
+.track-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 18px;
+  font-size: 1.35rem;
+  font-weight: 900;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+.track h3 {
+  margin: 0 0 10px;
+  font-size: 1.2rem;
+}
+
+.track p {
+  color: var(--muted);
+  line-height: 1.65;
+  margin: 0 0 16px;
+  font-size: 0.95rem;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  padding: 8px 11px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  color: #d9e8ff;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.benefits {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 20px;
+  align-items: stretch;
+}
+
+.stack, .pricing-card, .cta-box, .faq-item, .form-wrap {
+  border-radius: 24px;
+  padding: 24px;
+}
+
+.list {
+  display: grid;
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.list-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 14px;
+  align-items: start;
+  padding: 14px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.bullet {
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  background: linear-gradient(135deg, rgba(62,160,255,0.35), rgba(108,123,255,0.28));
+  border: 1px solid rgba(255,255,255,0.14);
+}
+
+.list-item strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.list-item p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin-top: 10px;
+}
+
+.pricing-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.pricing-card.featured {
+  outline: 2px solid rgba(62,160,255,0.45);
+  transform: scale(1.02);
+}
+
+.pricing-card .ribbon {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: linear-gradient(135deg, var(--accent), #3bd0ff);
+  color: #03222a;
+  font-weight: 900;
+  font-size: 0.78rem;
+  padding: 8px 12px;
+  border-radius: 999px;
+}
+
+.pricing-card h3 {
+  margin: 0 0 8px;
+  font-size: 1.25rem;
+}
+
+.pricing-card .value {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 900;
+  letter-spacing: -0.06em;
+  margin: 4px 0;
+}
+
+.pricing-card .sub {
+  color: var(--muted);
+  margin-bottom: 18px;
+  line-height: 1.6;
+}
+
+.pricing-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+  display: grid;
+  gap: 12px;
+}
+
+.pricing-card li {
+  padding-left: 24px;
+  position: relative;
+  color: #dde8ff;
+  line-height: 1.55;
+}
+
+.pricing-card li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-weight: 900;
+}
+
+.proof {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.proof .proof-card {
+  padding: 18px;
+  border-radius: 18px;
+  text-align: center;
+}
+
+.proof-card strong {
+  display: block;
+  font-size: 1.6rem;
+  margin-bottom: 6px;
+}
+
+.proof-card span {
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.cta-box {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 20px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-box::before {
+  content: "";
+  position: absolute;
+  width: 340px;
+  height: 340px;
+  right: -70px;
+  bottom: -80px;
+  background: radial-gradient(circle, rgba(62,160,255,0.22), transparent 62%);
+}
+
+.cta-box h2 {
+  margin: 0 0 14px;
+  font-size: clamp(1.8rem, 4vw, 3.2rem);
+  letter-spacing: -0.05em;
+}
+
+.cta-box p {
+  margin: 0 0 20px;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 60ch;
+}
+
+.mini-form {
+  display: grid;
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.input {
+  width: 100%;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.06);
+  color: var(--text);
+  border-radius: 16px;
+  padding: 15px 16px;
+  font: inherit;
+  outline: none;
+}
+
+.input::placeholder { color: #8ea2c6; }
+
+.faq {
+  display: grid;
+  gap: 14px;
+}
+
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item p {
+  margin: 14px 0 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 20px;
+}
+
+.contact-card {
+  border-radius: 24px;
+  padding: 24px;
+}
+
+.contact-card h3,
+.form-wrap h3 {
+  margin-top: 0;
+  font-size: 1.45rem;
+}
+
+.contact-card p,
+.form-wrap p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.contact-links {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--text);
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.contact-link small {
+  display: block;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.form-grid .full { grid-column: 1 / -1; }
+
+footer {
+  padding: 28px 0 60px;
+  color: var(--muted);
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.whatsapp-float {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 60;
+  width: 62px;
+  height: 62px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+  color: white;
+  background: linear-gradient(135deg, #1dd75f, #0aa84a);
+  box-shadow: 0 18px 35px rgba(0,0,0,0.35);
+  font-size: 1.6rem;
+  font-weight: 900;
+  animation: pulse 1.8s infinite;
+}
+
+.floating-note {
+  position: fixed;
+  right: 92px;
+  bottom: 28px;
+  z-index: 59;
+  padding: 12px 14px;
+  border-radius: 14px;
+  max-width: 220px;
+  font-size: 0.88rem;
+  color: #e8fff8;
+  background: rgba(10, 39, 22, 0.88);
+  border: 1px solid rgba(92, 255, 166, 0.22);
+  backdrop-filter: blur(12px);
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); box-shadow: 0 18px 35px rgba(0,0,0,0.35); }
+  50% { transform: scale(1.05); box-shadow: 0 18px 45px rgba(29,215,95,0.35); }
+  100% { transform: scale(1); box-shadow: 0 18px 35px rgba(0,0,0,0.35); }
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 1080px) {
+  .hero-grid,
+  .benefits,
+  .cta-box,
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tracks { grid-template-columns: repeat(2, 1fr); }
+  .proof { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 760px) {
+  .nav { align-items: flex-start; }
+  .nav-links { display: none; }
+  .tracks,
+  .pricing-grid,
+  .proof,
+  .mini-grid,
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .floating-note { display: none; }
+  .hero { padding-top: 42px; }
+  .section { padding: 26px 0; }
+  .stack, .pricing-card, .cta-box, .faq-item, .form-wrap, .contact-card { padding: 20px; }
+}
+
+  </style>
+</head>
+<body class="noise">
+  <header class="topbar">
+    <div class="container nav">
+      <a href="#inicio" class="brand">
+        <span class="brand-badge">N</span>
+        <span>cerebral.top</span>
+      </a><nav class="nav-links">
+    <a href="#trilhas">Trilhas</a>
+    <a href="#vantagens">Vantagens</a>
+    <a href="#planos">Planos</a>
+    <a href="#contato">Contato</a>
+    <a href="#planos" class="btn btn-primary">Entrar agora</a>
+  </nav>
+</div>
+
+  </header>  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div class="fade-up">
+          <div class="eyebrow">
+            <span class="dot"></span>
+            Plataforma Engenharia da Vida com acesso por 6 ou 12 meses
+          </div><h1>
+        Entre na <span class="gradient-text">Engenharia da Vida</span> e desenvolva uma visão estratégica sobre saúde, comportamento, economia, direito e gestão.
+      </h1>
+
+      <p>
+        Uma plataforma com modelo de acesso estilo biblioteca premium, reunindo programas autorais sobre vida, doenças, neuroeconomia, direito, gestão e anti-assimetria. Tudo organizado para formar visão estratégica, leitura de sistemas complexos e vantagem competitiva intelectual.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#planos">Ver planos</a>
+        <a class="btn btn-secondary" href="#contato">Falar com consultoria</a>
+      </div>
+
+      <div class="hero-metrics">
+        <div class="metric glass">
+          <strong>6 meses</strong>
+          <span>Entrada mais rápida e acessível</span>
+        </div>
+        <div class="metric glass">
+          <strong>12 meses</strong>
+          <span>Preço mensal mais sedutor</span>
+        </div>
+        <div class="metric glass">
+          <strong>Multitrilhas</strong>
+          <span>Várias áreas em uma só conta</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-card glass fade-up">
+      <div class="dashboard">
+        <div class="dashboard-top">
+          <div class="price-card">
+            <h3>Plano mais vendido</h3>
+            <div class="big">12x de R$ 74,90</div>
+            <small>
+              Acesso anual à plataforma com trilhas integradas e economia mensal mais forte para aumentar conversão.
+            </small>
+          </div>
+          <div class="tag">Vantagem por 12 meses</div>
+        </div>
+
+        <div class="mini-grid">
+          <div class="mini-card">
+            <strong>Economia das Doenças</strong>
+            <p>Leitura estratégica do impacto econômico, clínico e social das doenças em indivíduos, empresas e sistemas.</p>
+          </div>
+          <div class="mini-card">
+            <strong>Economia da Vida</strong>
+            <p>Uma abordagem para pensar saúde, comportamento, produtividade, valor e decisões na vida real.</p>
+          </div>
+          <div class="mini-card">
+            <strong>Neuroeconomia e Neurogestão</strong>
+            <p>Programas para compreender decisão, comportamento, gestão e vantagem intelectual aplicada.</p>
+          </div>
+          <div class="mini-card">
+            <strong>Direito Anti-Contenda</strong>
+            <p>Uma visão orientada à prevenção de conflitos, redução de atritos e construção de soluções estratégicas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="trilhas">
+  <div class="container">
+    <div class="section-head fade-up">
+      <div>
+        <h2>Programas organizados para dar clareza e escala</h2>
+      </div>
+      <p>
+        Em vez de conteúdos soltos e confusos, a plataforma reúne programas autorais com nomes fortes e lógica integrada. Isso facilita entendimento, melhora conversão e aumenta a percepção de valor. Isso facilita entendimento, melhora conversão e aumenta percepção de valor.
+      </p>
+    </div>
+
+    <div class="tracks">
+      <article class="track glass fade-up">
+        <div class="track-icon">D</div>
+        <h3>Economia das Doenças</h3>
+        <p>Analise doenças sob perspectiva econômica, estratégica e sistêmica, entendendo custos, impactos e oportunidades de transformação.</p>
+        <div class="chips">
+          <span class="chip">Doença e custo</span>
+          <span class="chip">Sistema de saúde</span>
+          <span class="chip">Estratégia</span>
+        </div>
+      </article>
+
+      <article class="track glass fade-up">
+        <div class="track-icon">A</div>
+        <h3>Administração das Doenças</h3>
+        <p>Uma visão gerencial aplicada às doenças, com foco em fases, decisões, ambiente, comportamento e impacto econômico.</p>
+        <div class="chips">
+          <span class="chip">Gestão</span>
+          <span class="chip">Tomada de decisão</span>
+          <span class="chip">Saúde</span>
+        </div>
+      </article>
+
+      <article class="track glass fade-up">
+        <div class="track-icon">V</div>
+        <h3>Economia da Vida e Administração da Vida</h3>
+        <p>Programas voltados para produtividade, valor, escolhas, comportamento, saúde e construção de autonomia na vida prática.</p>
+        <div class="chips">
+          <span class="chip">Vida prática</span>
+          <span class="chip">Autonomia</span>
+          <span class="chip">Produtividade</span>
+        </div>
+      </article>
+
+      <article class="track glass fade-up">
+        <div class="track-icon">N</div>
+        <h3>Neuroeconomia, Neurogestão e Neurodireito</h3>
+        <p>Entenda decisão, vulnerabilidade, comportamento e raciocínio aplicado a economia, gestão, direito e instituições.</p>
+        <div class="chips">
+          <span class="chip">Cognição</span>
+          <span class="chip">Comportamento</span>
+          <span class="chip">Instituições</span>
+        </div>
+      </article>
+
+      <article class="track glass fade-up">
+        <div class="track-icon">E</div>
+        <h3>Engenharia da Vida</h3>
+        <p>Uma proposta integradora para pensar sistemas vivos, saúde, adaptação, tecnologia e construção de soluções complexas.</p>
+        <div class="chips">
+          <span class="chip">Sistemas vivos</span>
+          <span class="chip">Tecnologia</span>
+          <span class="chip">Integração</span>
+        </div>
+      </article>
+
+      <article class="track glass fade-up">
+        <div class="track-icon">A</div>
+        <h3>Economia Anti-Assimétrica, Administração Anti-Assimétrica e Direito Anti-Contenda</h3>
+        <p>Programas voltados para reduzir assimetrias, prevenir conflitos, construir vantagem e repensar relações econômicas e institucionais.</p>
+        <div class="chips">
+          <span class="chip">Assimetria</span>
+          <span class="chip">Prevenção</span>
+          <span class="chip">Vantagem estratégica</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="vantagens">
+  <div class="container benefits">
+    <div class="stack glass fade-up">
+      <div class="section-head" style="margin-bottom: 10px;">
+        <div>
+          <h2>Por que esse modelo converte mais?</h2>
+        </div>
+      </div>
+
+      <div class="list">
+        <div class="list-item">
+          <div class="bullet">1</div>
+          <div>
+            <strong>O público entende mais rápido</strong>
+            <p>Quando você usa nomes conhecidos como medicina, engenharia e agropecuária, a pessoa reconhece imediatamente o valor da trilha.</p>
+          </div>
+        </div>
+
+        <div class="list-item">
+          <div class="bullet">2</div>
+          <div>
+            <strong>O acesso parece maior que o preço</strong>
+            <p>Ao mostrar várias trilhas em uma só assinatura, a percepção é de abundância, biblioteca e alto retorno por mensalidade.</p>
+          </div>
+        </div>
+
+        <div class="list-item">
+          <div class="bullet">3</div>
+          <div>
+            <strong>O plano anual fica psicologicamente mais sedutor</strong>
+            <p>Quando o valor mensal do anual cai bastante, a maioria sente que está aproveitando melhor a oportunidade.</p>
+          </div>
+        </div>
+
+        <div class="list-item">
+          <div class="bullet">4</div>
+          <div>
+            <strong>Você pode crescer sem destruir o posicionamento</strong>
+            <p>Mesmo massificando, a plataforma continua sofisticada porque é organizada por trilhas e não parece um catálogo bagunçado.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stack glass fade-up">
+      <div class="section-head" style="margin-bottom: 10px;">
+        <div>
+          <h2>Formato ideal da oferta</h2>
+        </div>
+      </div>
+
+      <div class="list">
+        <div class="list-item">
+          <div class="bullet">✓</div>
+          <div>
+            <strong>Plataforma única</strong>
+            <p>Uma marca-mãe forte: cerebral.top.</p>
+          </div>
+        </div>
+
+        <div class="list-item">
+          <div class="bullet">✓</div>
+          <div>
+            <strong>Trilhas internas</strong>
+            <p>Economia das Doenças, Administração das Doenças, Economia da Vida, Administração da Vida, Economia Anti-Assimétrica, Neuroeconomia, Engenharia da Vida, Neurodireito, Neurogestão, Administração Anti-Assimétrica e Direito Anti-Contenda.</p>
+          </div>
+        </div>
+
+        <div class="list-item">
+          <div class="bullet">✓</div>
+          <div>
+            <strong>Pagamento fechado</strong>
+            <p>6 meses para entrada mais acessível e 12 meses como opção de maior conversão mensal.</p>
+          </div>
+        </div>
+
+        <div class="list-item">
+          <div class="bullet">✓</div>
+          <div>
+            <strong>Mensagem central</strong>
+            <p>Não é apenas assistir aulas. É entrar em uma formação para pensar grande, inovar e construir autonomia.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="planos">
+  <div class="container">
+    <div class="section-head fade-up">
+      <div>
+        <h2>Escolha o plano ideal para entrar na plataforma</h2>
+      </div>
+      <p>
+        Use os valores abaixo como ponto de partida. Você pode ajustar depois, mas a lógica de conversão é manter o anual visualmente mais vantajoso no valor por mês.
+      </p>
+    </div>
+
+    <div class="pricing-grid">
+      <article class="pricing-card glass fade-up">
+        <h3>Plano Semestral cerebral.top</h3>
+        <div class="value">6x de R$ 99,90</div>
+        <div class="sub">Entrada mais acessível para quem quer conhecer a Engenharia da Vida e avançar rapidamente nos programas principais.</div>
+        <ul>
+          <li>Acesso à plataforma por 6 meses</li>
+          <li>Programas integrados em múltiplas áreas</li>
+          <li>Catálogo organizado por temas</li>
+          <li>Ideal para entrada rápida</li>
+        </ul>
+        <a href="#contato" class="btn btn-secondary" style="width:100%;">Quero o semestral</a>
+      </article>
+
+      <article class="pricing-card glass featured fade-up">
+        <span class="ribbon">Mais sedutor</span>
+        <h3>Plano Anual cerebral.top</h3>
+        <div class="value">12x de R$ 74,90</div>
+        <div class="sub">A opção com maior poder de conversão para massificar, reduzir a barreira mensal e ampliar sua vantagem ao longo do ano.</div>
+        <small style="display:block; margin-bottom:18px; color:#20d3b3; font-weight:800;">Menos de R$ 2,50 por dia para desenvolver visão interdisciplinar e estratégica.</small>
+        <ul>
+          <li>Acesso à plataforma por 12 meses</li>
+          <li>Melhor custo por mês</li>
+          <li>Mais tempo para explorar vários programas</li>
+          <li>Perfeito para quem quer continuidade</li>
+        </ul>
+        <a href="#contato" class="btn btn-primary" style="width:100%;">Começar agora por menos de R$ 3/dia</a>
+      </article>
+    </div>
+
+    <div class="glass fade-up" style="padding:20px; border-radius:24px; margin: 24px 0 18px;">
+      <strong style="display:block; font-size:1.05rem; margin-bottom:8px;">Aqui você não aprende só conteúdo — aprende a usar conhecimento como vantagem.</strong>
+      <p style="margin:0; color: var(--muted); line-height:1.7;">Aprenda a conectar áreas diferentes, reduzir assimetrias de informação, enxergar oportunidades invisíveis e transformar isso em decisão, posicionamento e resultado.</p>
+    </div>
+
+    <div class="proof">
+      <div class="proof-card glass fade-up">
+        <strong>1 conta</strong>
+        <span>Várias trilhas para aumentar percepção de valor</span>
+      </div>
+      <div class="proof-card glass fade-up">
+        <strong>+ clareza</strong>
+        <span>Nomes que o público já reconhece e procura</span>
+      </div>
+      <div class="proof-card glass fade-up">
+        <strong>+ escala</strong>
+        <span>Modelo preparado para massificação</span>
+      </div>
+      <div class="proof-card glass fade-up">
+        <strong>+ retenção</strong>
+        <span>Mais tempo de permanência na plataforma</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="cta-box glass fade-up">
+      <div>
+        <h2>Entre agora na nova fase da cerebral.top</h2>
+        <p>
+          Não é sobre assistir aulas. É sobre mudar sua forma de pensar, agir e ganhar dinheiro. Entre em uma plataforma criada para quem quer compreender a vida, as doenças, a decisão, o direito, a gestão e a assimetria de forma estratégica.
+        </p>
+        <div class="hero-actions" style="margin-bottom:0;">
+          <a class="btn btn-primary" href="#contato">Receber apresentação</a>
+          <a class="btn btn-secondary" href="#trilhas">Ver trilhas</a>
+        </div>
+      </div>
+
+      <form class="mini-form" onsubmit="handleLead(event)">
+        <input class="input" type="text" id="miniNome" placeholder="Seu nome" required>
+        <input class="input" type="email" id="miniEmail" placeholder="Seu melhor e-mail" required>
+        <input class="input" type="tel" id="miniWhatsapp" placeholder="Seu WhatsApp" required>
+        <button class="btn btn-primary" type="submit">Quero saber mais</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head fade-up">
+      <div>
+        <h2>Perguntas frequentes</h2>
+      </div>
+      <p>
+        Uma boa landing page precisa reduzir objeções rapidamente. Estas perguntas já ajudam a preparar a venda e deixam a decisão mais simples.
+      </p>
+    </div>
+
+    <div class="faq">
+      <details class="faq-item glass fade-up">
+        <summary>Isso é uma plataforma ou cursos separados?<span>+</span></summary>
+        <p>O modelo ideal é uma plataforma única com trilhas internas. Assim, você mantém a marca forte, aumenta o valor percebido e facilita a decisão de compra.</p>
+      </details>
+
+      <details class="faq-item glass fade-up">
+        <summary>O que entra na assinatura?<span>+</span></summary>
+        <p>Entram as trilhas organizadas dentro da cerebral.top, como medicina, engenharia, biotecnologia, agropecuária, meio ambiente e negócios, conforme sua estrutura comercial final.</p>
+      </details>
+
+      <details class="faq-item glass fade-up">
+        <summary>Qual plano tende a converter mais?<span>+</span></summary>
+        <p>Normalmente o anual, desde que a diferença no valor por mês seja bem visível. Isso gera a sensação de vantagem, permanência e melhor aproveitamento da plataforma.</p>
+      </details>
+
+      <details class="faq-item glass fade-up">
+        <summary>Posso personalizar os preços depois?<span>+</span></summary>
+        <p>Sim. A estrutura da página foi feita para você trocar valores, nomes das trilhas, textos e botões de CTA com facilidade.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contato">
+  <div class="container contact-grid">
+    <div class="contact-card glass fade-up">
+      <h3>Contato direto</h3>
+      <p>
+        Use este bloco para captar leads por WhatsApp, telefone ou e-mail. Troque os dados abaixo pelos seus contatos reais.
+      </p>
+
+      <div class="contact-links">
+        <a class="contact-link" href="https://wa.me/5500000000000?text=Ol%C3%A1%2C%20quero%20entrar%20na%20cerebral.top%20agora" target="_blank" rel="noopener noreferrer">
+          <span>💬</span>
+          <span>
+            WhatsApp comercial
+            <small>(00) 00000-0000</small>
+          </span>
+        </a>
+
+        <a class="contact-link" href="tel:+5500000000000">
+          <span>📞</span>
+          <span>
+            Telefone
+            <small>(00) 0000-0000</small>
+          </span>
+        </a>
+
+        <a class="contact-link" href="mailto:contato@nexialbusiness.com?subject=Quero%20saber%20mais%20sobre%20a%20cerebral.top">
+          <span>✉️</span>
+          <span>
+            E-mail
+            <small>contato@nexialbusiness.com</small>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <div class="form-wrap glass fade-up">
+      <h3>Solicite uma apresentação</h3>
+      <p>
+        Formulário de alta conversão para captação inicial. Você pode integrar depois com Formspree, Netlify Forms, Zapier, Make ou seu backend próprio.
+      </p>
+
+      <form id="leadForm" onsubmit="handleLead(event)">
+        <div class="form-grid">
+          <input class="input" type="text" id="nome" placeholder="Nome completo" required>
+          <input class="input" type="email" id="email" placeholder="Seu e-mail" required>
+          <input class="input" type="tel" id="telefone" placeholder="WhatsApp ou telefone" required>
+          <select class="input" id="interesse" required>
+            <option value="">Área de maior interesse</option>
+            <option>Economia das Doenças</option>
+            <option>Administração das Doenças</option>
+            <option>Economia da Vida</option>
+            <option>Administração da Vida</option>
+            <option>Economia Anti-Assimétrica</option>
+            <option>Neuroeconomia</option>
+            <option>Engenharia da Vida</option>
+            <option>Neurodireito</option>
+            <option>Neurogestão</option>
+            <option>Administração Anti-Assimétrica</option>
+            <option>Direito Anti-Contenda</option>
+          </select>
+          <textarea class="input full" id="mensagem" rows="5" placeholder="Escreva rapidamente o que você busca na plataforma"></textarea>
+          <button class="btn btn-primary full" type="submit">Enviar interesse</button>
+        </div>
+      </form>
+
+      <p id="formStatus" style="margin-top:14px; color:#bffbef; display:none;">Recebemos seu interesse. Agora personalize a integração do formulário para envio real.</p>
+    </div>
+  </div>
+</section>
+
+  </main>  <footer>
+    <div class="container">
+      cerebral.top — Plataforma de formação interdisciplinar, inovação e autonomia.
+    </div>
+  </footer>  <div class="floating-note glass">Fale agora no WhatsApp e descubra como usar conhecimento como vantagem competitiva.</div>
+  <a class="whatsapp-float" href="https://wa.me/5500000000000?text=Ol%C3%A1%2C%20quero%20entrar%20na%20cerebral.top%20agora" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">W</a>  <script>
+    const observers = document.querySelectorAll('.fade-up');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.14 });
+
+    observers.forEach(item => io.observe(item));
+
+    function handleLead(event) {
+      event.preventDefault();
+      const status = document.getElementById('formStatus');
+      if (status) status.style.display = 'block';
+      alert('Lead captado com sucesso na interface. Agora conecte este formulário ao seu e-mail, WhatsApp API ou backend.');
+    }
+  </script></body>
+</html>
