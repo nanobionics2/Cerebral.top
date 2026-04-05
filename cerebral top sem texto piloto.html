@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>cerebral.top | Engenharia da Vida</title>
+  <meta name="description" content="cerebral.top é uma plataforma de formação estratégica com acesso por 6 ou 12 meses e programas em Economia das Doenças, Administração das Doenças, Economia da Vida, Administração da Vida, Neuroeconomia, Neurodireito, Neurogestão, Engenharia da Vida e Direito Anti-Contenda." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#07111f;
+      --bg2:#0b1830;
+      --card:rgba(12,24,48,.72);
+      --line:rgba(255,255,255,.10);
+      --text:#edf3ff;
+      --muted:#a8b7d7;
+      --primary:#3ea0ff;
+      --primary2:#6c7bff;
+      --accent:#20d3b3;
+      --shadow:0 20px 60px rgba(0,0,0,.35);
+      --max:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:'Inter',sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(62,160,255,.24), transparent 30%),
+        radial-gradient(circle at 90% 10%, rgba(108,123,255,.20), transparent 26%),
+        radial-gradient(circle at 50% 100%, rgba(32,211,179,.12), transparent 22%),
+        linear-gradient(180deg,#06101c 0%,#081427 35%,#050a14 100%);
+      overflow-x:hidden;
+    }
+    .container{width:min(100% - 32px,var(--max));margin:0 auto}
+    .glass{
+      background:var(--card);
+      border:1px solid var(--line);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(16px);
+      -webkit-backdrop-filter:blur(16px);
+    }
+    .topbar{
+      position:sticky;top:0;z-index:50;
+      background:rgba(3,10,20,.78);
+      border-bottom:1px solid rgba(255,255,255,.06);
+      backdrop-filter:blur(14px);
+    }
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;
+      gap:20px;padding:16px 0;
+    }
+    .brand{
+      display:flex;align-items:center;gap:12px;
+      text-decoration:none;color:var(--text);font-weight:800;
+    }
+    .brand-badge{
+      width:42px;height:42px;border-radius:14px;
+      display:grid;place-items:center;
+      background:linear-gradient(135deg,var(--primary),var(--primary2));
+      font-weight:900;box-shadow:0 10px 24px rgba(62,160,255,.35);
+    }
+    .nav-links{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+    .nav-links a{text-decoration:none;color:var(--muted);font-weight:600;font-size:.95rem}
+    .nav-links a:hover{color:var(--text)}
+    .btn{
+      border:0;cursor:pointer;text-decoration:none;
+      display:inline-flex;align-items:center;justify-content:center;
+      gap:10px;padding:14px 22px;border-radius:999px;
+      font-weight:800;font-size:.96rem;transition:.18s ease;
+    }
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{
+      color:#fff;background:linear-gradient(135deg,var(--primary),var(--primary2));
+      box-shadow:0 14px 34px rgba(62,160,255,.35);
+    }
+    .btn-secondary{
+      color:var(--text);background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.1);
+    }
+    .hero{padding:60px 0 26px}
+    .hero-grid{
+      display:grid;grid-template-columns:1.05fr .95fr;
+      gap:28px;align-items:center;
+    }
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:10px 16px;border-radius:999px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.08);
+      color:#d9e6ff;font-size:.9rem;font-weight:700;margin-bottom:16px;
+    }
+    .dot{
+      width:10px;height:10px;border-radius:999px;background:var(--accent);
+      box-shadow:0 0 0 6px rgba(32,211,179,.12);
+    }
+    h1{
+      font-size:clamp(2.2rem,5vw,4.8rem);
+      line-height:.97;margin:0 0 18px;
+      letter-spacing:-.055em;max-width:12ch;
+    }
+    .gradient-text{
+      background:linear-gradient(135deg,#ffffff,#9ccaff,#77f0dd);
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+    }
+    .hero p,.section-head p,.mini-card p,.track p,.contact-card p,.form-wrap p,.faq-item p{
+      color:var(--muted);line-height:1.7;
+    }
+    .hero-actions,.hero-metrics{display:flex;gap:14px;flex-wrap:wrap}
+    .hero-metrics{margin-top:24px}
+    .metric{padding:14px 16px;border-radius:18px;min-width:150px}
+    .metric strong{display:block;font-size:1.2rem;margin-bottom:4px}
+    .hero-card{border-radius:28px;padding:22px}
+    .price-box{
+      padding:18px;border-radius:20px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      margin-bottom:16px;
+    }
+    .price-box .big{font-size:2rem;font-weight:900;letter-spacing:-.05em}
+    .mini-grid,.tracks,.benefits,.pricing-grid,.contact-grid{
+      display:grid;gap:18px;
+    }
+    .mini-grid{grid-template-columns:repeat(2,1fr)}
+    .tracks{grid-template-columns:repeat(3,1fr)}
+    .benefits{grid-template-columns:1fr 1fr}
+    .pricing-grid{grid-template-columns:repeat(2,1fr)}
+    .contact-grid{grid-template-columns:.9fr 1.1fr}
+    .mini-card,.track,.stack,.pricing-card,.contact-card,.form-wrap,.faq-item{
+      padding:22px;border-radius:22px;
+    }
+    .mini-card,.track{
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+    }
+    .track-icon{
+      width:54px;height:54px;border-radius:16px;display:grid;place-items:center;
+      background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);
+      font-size:1.35rem;font-weight:900;margin-bottom:18px;
+    }
+    .chips{display:flex;gap:8px;flex-wrap:wrap}
+    .chip{
+      padding:8px 11px;border-radius:999px;font-size:.8rem;
+      color:#d9e8ff;background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.08);
+    }
+    .section{padding:34px 0}
+    .section-head{
+      display:flex;justify-content:space-between;align-items:end;
+      gap:18px;flex-wrap:wrap;margin-bottom:22px;
+    }
+    .section-head h2{
+      margin:0;font-size:clamp(1.7rem,3vw,3rem);letter-spacing:-.045em;
+    }
+    .list{display:grid;gap:14px}
+    .list-item{
+      display:grid;grid-template-columns:auto 1fr;gap:14px;
+      padding:14px;border-radius:18px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+    }
+    .bullet{
+      width:34px;height:34px;border-radius:12px;display:grid;place-items:center;
+      font-weight:900;background:linear-gradient(135deg,rgba(62,160,255,.35),rgba(108,123,255,.28));
+      border:1px solid rgba(255,255,255,.14);
+    }
+    .pricing-card.featured{outline:2px solid rgba(62,160,255,.45);transform:scale(1.02)}
+    .ribbon{
+      display:inline-block;margin-bottom:10px;padding:8px 12px;border-radius:999px;
+      background:linear-gradient(135deg,var(--accent),#3bd0ff);
+      color:#03222a;font-weight:900;font-size:.78rem;
+    }
+    .value{font-size:clamp(2rem,5vw,3rem);font-weight:900;letter-spacing:-.06em;margin:4px 0}
+    .pricing-card ul{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+    .pricing-card li{
+      position:relative;padding-left:22px;line-height:1.55;color:#dde8ff;
+    }
+    .pricing-card li::before{
+      content:"✓";position:absolute;left:0;top:0;color:var(--accent);font-weight:900;
+    }
+    .faq{display:grid;gap:14px}
+    .faq-item summary{
+      list-style:none;cursor:pointer;font-weight:800;
+      display:flex;justify-content:space-between;gap:16px;
+    }
+    .faq-item summary::-webkit-details-marker{display:none}
+    .contact-links{display:grid;gap:12px;margin-top:18px}
+    .contact-link{
+      display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text);
+      padding:14px 16px;border-radius:16px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+    }
+    .contact-link small{display:block;color:var(--muted);margin-top:2px}
+    .form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .full{grid-column:1 / -1}
+    .input{
+      width:100%;border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.06);color:var(--text);
+      border-radius:16px;padding:15px 16px;font:inherit;outline:none;
+    }
+    .input::placeholder{color:#8ea2c6}
+    footer{padding:28px 0 60px;color:var(--muted);text-align:center;font-size:.95rem}
+    .whatsapp-float{
+      position:fixed;right:18px;bottom:18px;z-index:60;
+      width:62px;height:62px;border-radius:999px;display:grid;place-items:center;
+      text-decoration:none;color:#fff;background:linear-gradient(135deg,#1dd75f,#0aa84a);
+      box-shadow:0 18px 35px rgba(0,0,0,.35);font-size:1.1rem;font-weight:900;
+    }
+    @media (max-width:1080px){
+      .hero-grid,.benefits,.contact-grid{grid-template-columns:1fr}
+      .tracks{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:760px){
+      .nav-links{display:none}
+      .tracks,.pricing-grid,.mini-grid,.form-grid{grid-template-columns:1fr}
+      .hero{padding-top:42px}
+      .section{padding:26px 0}
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a href="#inicio" class="brand">
+        <span class="brand-badge">C</span>
+        <span>cerebral.top</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#programas">Programas</a>
+        <a href="#vantagens">Benefícios</a>
+        <a href="#planos">Planos</a>
+        <a href="#contato">Contato</a>
+        <a href="#planos" class="btn btn-primary">Assinar agora</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">
+            <span class="dot"></span>
+            Acesso por 6 ou 12 meses à plataforma Engenharia da Vida
+          </div>
+
+          <h1>
+            Amplie sua visão com a <span class="gradient-text">Engenharia da Vida</span>.
+          </h1>
+
+          <p>
+            A cerebral.top é uma plataforma de formação estratégica para quem quer desenvolver leitura interdisciplinar sobre vida,
+            doenças, comportamento, decisão, gestão, direito e vantagem intelectual aplicada.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#planos">Ver planos</a>
+            <a class="btn btn-secondary" href="https://wa.me/5591980144854?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20a%20cerebral.top." target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
+          </div>
+
+          <div class="hero-metrics">
+            <div class="metric glass">
+              <strong>6 meses</strong>
+              <span>Entrada rápida e acessível</span>
+            </div>
+            <div class="metric glass">
+              <strong>12 meses</strong>
+              <span>Melhor custo mensal</span>
+            </div>
+            <div class="metric glass">
+              <strong>Biblioteca viva</strong>
+              <span>Programas conectados em uma conta</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-card glass">
+          <div class="price-box">
+            <h3 style="margin:0 0 8px;">Plano mais escolhido</h3>
+            <div class="big">12x de R$ 74,90</div>
+            <small style="display:block;color:var(--muted);margin-top:4px;line-height:1.6;">
+              Acesso anual à plataforma com melhor custo mensal e mais tempo para avançar nos programas.
+            </small>
+          </div>
+
+          <div class="mini-grid">
+            <div class="mini-card">
+              <strong>Economia das Doenças</strong>
+              <p>Uma leitura estratégica dos impactos econômicos, clínicos e sociais das doenças.</p>
+            </div>
+            <div class="mini-card">
+              <strong>Economia da Vida</strong>
+              <p>Uma abordagem para compreender valor, saúde, comportamento e decisão no cotidiano.</p>
+            </div>
+            <div class="mini-card">
+              <strong>Neuroeconomia e Neurogestão</strong>
+              <p>Programas voltados à decisão, comportamento, cognição e gestão aplicada.</p>
+            </div>
+            <div class="mini-card">
+              <strong>Direito Anti-Contenda</strong>
+              <p>Uma visão preventiva para reduzir conflitos, atritos e desperdícios institucionais.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="programas">
+      <div class="container">
+        <div class="section-head">
+          <div><h2>Programas centrais da plataforma</h2></div>
+          <p>
+            Conteúdos organizados com identidade própria, lógica integrada e foco em formação estratégica para vida real.
+          </p>
+        </div>
+
+        <div class="tracks">
+          <article class="track glass">
+            <div class="track-icon">D</div>
+            <h3>Economia das Doenças</h3>
+            <p>Entenda como as doenças afetam indivíduos, famílias, empresas e sistemas, sob uma perspectiva econômica e estratégica.</p>
+            <div class="chips">
+              <span class="chip">Doença</span>
+              <span class="chip">Impacto</span>
+              <span class="chip">Estratégia</span>
+            </div>
+          </article>
+
+          <article class="track glass">
+            <div class="track-icon">A</div>
+            <h3>Administração das Doenças</h3>
+            <p>Uma abordagem gerencial para analisar fases da doença, decisões, ambiente, comportamento e custo.</p>
+            <div class="chips">
+              <span class="chip">Gestão</span>
+              <span class="chip">Decisão</span>
+              <span class="chip">Saúde</span>
+            </div>
+          </article>
+
+          <article class="track glass">
+            <div class="track-icon">V</div>
+            <h3>Economia da Vida e Administração da Vida</h3>
+            <p>Programas orientados para valor, produtividade, escolhas, autonomia e construção de direção prática.</p>
+            <div class="chips">
+              <span class="chip">Vida prática</span>
+              <span class="chip">Autonomia</span>
+              <span class="chip">Valor</span>
+            </div>
+          </article>
+
+          <article class="track glass">
+            <div class="track-icon">N</div>
+            <h3>Neuroeconomia, Neurogestão e Neurodireito</h3>
+            <p>Compreenda decisão, vulnerabilidade, comportamento e raciocínio aplicados à economia, à gestão e ao direito.</p>
+            <div class="chips">
+              <span class="chip">Cognição</span>
+              <span class="chip">Comportamento</span>
+              <span class="chip">Instituições</span>
+            </div>
+          </article>
+
+          <article class="track glass">
+            <div class="track-icon">E</div>
+            <h3>Engenharia da Vida</h3>
+            <p>Uma proposta integradora para pensar sistemas vivos, adaptação, tecnologia, saúde e construção de soluções complexas.</p>
+            <div class="chips">
+              <span class="chip">Sistemas vivos</span>
+              <span class="chip">Tecnologia</span>
+              <span class="chip">Integração</span>
+            </div>
+          </article>
+
+          <article class="track glass">
+            <div class="track-icon">A</div>
+            <h3>Economia Anti-Assimétrica, Administração Anti-Assimétrica e Direito Anti-Contenda</h3>
+            <p>Programas voltados para reduzir assimetrias, prevenir conflitos e construir vantagem estratégica sustentável.</p>
+            <div class="chips">
+              <span class="chip">Assimetria</span>
+              <span class="chip">Prevenção</span>
+              <span class="chip">Vantagem</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="vantagens">
+      <div class="container benefits">
+        <div class="stack glass">
+          <div class="section-head" style="margin-bottom:10px">
+            <div><h2>Por que entrar na cerebral.top</h2></div>
+          </div>
+
+          <div class="list">
+            <div class="list-item">
+              <div class="bullet">1</div>
+              <div>
+                <strong>Clareza para pensar melhor</strong>
+                <p>Você entra em uma plataforma desenhada para ampliar sua visão sobre saúde, comportamento, decisão, direito, gestão e valor.</p>
+              </div>
+            </div>
+
+            <div class="list-item">
+              <div class="bullet">2</div>
+              <div>
+                <strong>Programas integrados em um só lugar</strong>
+                <p>Em vez de conteúdos soltos, você acessa uma biblioteca estratégica com programas que se conectam e aprofundam seu raciocínio.</p>
+              </div>
+            </div>
+
+            <div class="list-item">
+              <div class="bullet">3</div>
+              <div>
+                <strong>Formação para vida real</strong>
+                <p>O foco não é teoria isolada. O foco é aplicar conhecimento em decisões, projetos, carreira, posicionamento e autonomia.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stack glass">
+          <div class="section-head" style="margin-bottom:10px">
+            <div><h2>O que você encontra aqui</h2></div>
+          </div>
+
+          <div class="list">
+            <div class="list-item">
+              <div class="bullet">✓</div>
+              <div>
+                <strong>Uma plataforma com identidade própria</strong>
+                <p>A cerebral.top reúne programas autorais com uma proposta integrada de formação estratégica.</p>
+              </div>
+            </div>
+
+            <div class="list-item">
+              <div class="bullet">✓</div>
+              <div>
+                <strong>Leitura interdisciplinar da vida e das doenças</strong>
+                <p>Você acessa conteúdos que conectam economia, administração, neurociência, direito, comportamento e sistemas vivos.</p>
+              </div>
+            </div>
+
+            <div class="list-item">
+              <div class="bullet">✓</div>
+              <div>
+                <strong>Conhecimento para direção e vantagem</strong>
+                <p>A proposta é desenvolver visão, critério, clareza e capacidade de agir com mais inteligência no mundo real.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="planos">
+      <div class="container">
+        <div class="section-head">
+          <div><h2>Escolha como você quer entrar</h2></div>
+          <p>
+            Você pode começar com o plano semestral ou aproveitar o plano anual para ter mais tempo, melhor custo mensal e acesso prolongado à plataforma.
+          </p>
+        </div>
+
+        <div class="pricing-grid">
+          <article class="pricing-card glass">
+            <h3>Plano Semestral cerebral.top</h3>
+            <div class="value">6x de R$ 99,90</div>
+            <div class="sub">Uma porta de entrada acessível para começar agora e avançar rapidamente nos programas centrais da plataforma.</div>
+            <ul>
+              <li>Acesso completo por 6 meses</li>
+              <li>Programas integrados em múltiplas áreas</li>
+              <li>Ideal para entrada rápida</li>
+            </ul>
+            <a href="https://wa.me/5591980144854?text=Ol%C3%A1%2C%20quero%20entrar%20no%20Plano%20Semestral%20da%20cerebral.top." class="btn btn-secondary" style="width:100%;" target="_blank" rel="noopener noreferrer">Quero o semestral</a>
+          </article>
+
+          <article class="pricing-card glass featured">
+            <span class="ribbon">Mais escolhido</span>
+            <h3>Plano Anual cerebral.top</h3>
+            <div class="value">12x de R$ 74,90</div>
+            <div class="sub">A melhor escolha para quem quer continuidade, melhor custo mensal e mais profundidade ao longo da jornada.</div>
+            <ul>
+              <li>Acesso completo por 12 meses</li>
+              <li>Melhor custo por mês</li>
+              <li>Mais tempo para explorar vários programas</li>
+            </ul>
+            <a href="https://wa.me/5591980144854?text=Ol%C3%A1%2C%20quero%20entrar%20no%20Plano%20Anual%20da%20cerebral.top." class="btn btn-primary" style="width:100%;" target="_blank" rel="noopener noreferrer">Quero o anual</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="stack glass">
+          <h2 style="margin-top:0;">Mais do que conteúdo: direção intelectual aplicada</h2>
+          <p style="margin-bottom:0;">
+            A cerebral.top foi criada para quem quer compreender melhor a vida, as doenças, o comportamento, a decisão e os sistemas complexos,
+            transformando esse conhecimento em clareza, posicionamento e vantagem real.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div><h2>Perguntas frequentes</h2></div>
+          <p>As respostas principais para facilitar sua decisão.</p>
+        </div>
+
+        <div class="faq">
+          <details class="faq-item glass">
+            <summary>Isso é uma plataforma ou cursos separados?<span>+</span></summary>
+            <p>É uma plataforma única com vários programas internos. Isso fortalece a proposta e amplia o valor percebido da assinatura.</p>
+          </details>
+
+          <details class="faq-item glass">
+            <summary>O que entra na assinatura?<span>+</span></summary>
+            <p>Você acessa os programas da cerebral.top, incluindo Economia das Doenças, Administração das Doenças, Economia da Vida, Neuroeconomia, Neurogestão, Neurodireito, Engenharia da Vida e Direito Anti-Contenda.</p>
+          </details>
+
+          <details class="faq-item glass">
+            <summary>Qual plano tende a valer mais a pena?<span>+</span></summary>
+            <p>O plano anual oferece o melhor custo mensal e mais tempo para explorar a plataforma com profundidade.</p>
+          </details>
+
+          <details class="faq-item glass">
+            <summary>Como faço para entrar?<span>+</span></summary>
+            <p>Você pode clicar em qualquer botão de WhatsApp desta página e seguir diretamente para o atendimento.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contato">
+      <div class="container contact-grid">
+        <div class="contact-card glass">
+          <h3>Contato direto</h3>
+          <p>
+            Tire dúvidas, escolha seu plano ou solicite uma apresentação da plataforma pelos canais abaixo.
+          </p>
+
+          <div class="contact-links">
+            <a class="contact-link" href="https://wa.me/5591980144854?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20a%20cerebral.top." target="_blank" rel="noopener noreferrer">
+              <span>💬</span>
+              <span>
+                WhatsApp
+                <small>(91) 98014-4854</small>
+              </span>
+            </a>
+
+            <a class="contact-link" href="tel:+5591980144854">
+              <span>📞</span>
+              <span>
+                Telefone
+                <small>+55 91 98014-4854</small>
+              </span>
+            </a>
+
+            <a class="contact-link" href="mailto:drclaudiocutrim@gmail.com?subject=Quero%20saber%20mais%20sobre%20a%20cerebral.top">
+              <span>✉️</span>
+              <span>
+                E-mail
+                <small>drclaudiocutrim@gmail.com</small>
+              </span>
+            </a>
+          </div>
+        </div>
+
+        <div class="form-wrap glass">
+          <h3>Solicite uma apresentação</h3>
+          <p>
+            Preencha rapidamente e envie seu interesse direto para o WhatsApp.
+          </p>
+
+          <form id="leadForm">
+            <div class="form-grid">
+              <input class="input" type="text" id="nome" placeholder="Nome completo" required>
+              <input class="input" type="email" id="email" placeholder="Seu e-mail" required>
+              <input class="input" type="tel" id="telefone" placeholder="WhatsApp ou telefone" required>
+              <select class="input" id="interesse" required>
+                <option value="">Área de maior interesse</option>
+                <option>Economia das Doenças</option>
+                <option>Administração das Doenças</option>
+                <option>Economia da Vida</option>
+                <option>Administração da Vida</option>
+                <option>Economia Anti-Assimétrica</option>
+                <option>Neuroeconomia</option>
+                <option>Neurodireito</option>
+                <option>Neurogestão</option>
+                <option>Engenharia da Vida</option>
+                <option>Direito Anti-Contenda</option>
+              </select>
+              <textarea class="input full" id="mensagem" rows="5" placeholder="Escreva rapidamente o que você busca na plataforma"></textarea>
+              <button class="btn btn-primary full" type="submit">Enviar interesse</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      cerebral.top — Plataforma de formação estratégica, inovação e autonomia intelectual.
+    </div>
+  </footer>
+
+  <a class="whatsapp-float" href="https://wa.me/5591980144854?text=Ol%C3%A1%2C%20quero%20entrar%20na%20cerebral.top%20agora." target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">WA</a>
+
+  <script>
+    document.getElementById('leadForm').addEventListener('submit', function(e){
+      e.preventDefault();
+
+      const nome = document.getElementById('nome').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const telefone = document.getElementById('telefone').value.trim();
+      const interesse = document.getElementById('interesse').value;
+      const mensagem = document.getElementById('mensagem').value.trim();
+
+      const texto =
+`Olá! Quero saber mais sobre a cerebral.top.
+
+Nome: ${nome}
+E-mail: ${email}
+Telefone: ${telefone}
+Área de interesse: ${interesse}
+
+Mensagem:
+${mensagem || "Quero receber mais detalhes sobre a plataforma e os planos."}`;
+
+      window.open(`https://wa.me/5591980144854?text=${encodeURIComponent(texto)}`, '_blank');
+    });
+  </script>
+</body>
+</html>
